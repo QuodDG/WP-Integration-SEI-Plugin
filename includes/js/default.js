@@ -29,7 +29,6 @@
         const ano = qdo_isei_form.attr('data-p2');
         const semestre = qdo_isei_form.attr('data-p3');
         const campanha = qdo_isei_form.attr('data-p4');
-
         //Remover os atributos
         qdo_isei_form
                 .removeAttr('data-p0')
@@ -54,7 +53,7 @@
                 return;
             }
             grecaptcha.ready(function () {
-                grecaptcha.execute(rsk, {action: 'submit'}).then(function (response) {
+                grecaptcha.execute(rsk, {action: 'advanced_nocaptcha_recaptcha'}).then(function (response) {
                     //console.log(response);
                     isei_request_step_1(response);
                 });
@@ -69,7 +68,7 @@
                 return;
             }
             grecaptcha.ready(function () {
-                grecaptcha.execute(rsk, {action: 'submit'}).then(function (response) {
+                grecaptcha.execute(rsk, {action: 'advanced_nocaptcha_recaptcha'}).then(function (response) {
                     //console.log(response);
                     isei_request_step_2(response);
                 });
@@ -92,7 +91,7 @@
                 return;
             }
             grecaptcha.ready(function () {
-                grecaptcha.execute(rsk, {action: 'submit'}).then(function (response) {
+                grecaptcha.execute(rsk, {action: 'advanced_nocaptcha_recaptcha'}).then(function (response) {
                     //console.log(response);
                     isei_request_step_3(response);
                 });

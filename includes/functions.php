@@ -37,7 +37,7 @@ define('QDO_RD_INTEGRATION_NO_CONFIG', 0);
 define('QDO_RD_INTEGRATION_OFF', 1);
 define('QDO_RD_INTEGRATION_ON', 2);
 
-$qdo_isei_version = 100;
+$qdo_isei_version = 103;
 
 /* == Dependences == */
 
@@ -47,7 +47,7 @@ function qdo_isei_dependences() {
     //Advanced noCaptcha & invisible Captcha
     if (!is_plugin_active('advanced-nocaptcha-recaptcha/advanced-nocaptcha-recaptcha.php')) {
         echo '<div class="error"><p><strong>QDO Integration SEI</strong>: O plugin "Advanced noCaptcha & invisible Captcha" é necessário.</p></div>';
-    } else if (!function_exists('anr_verify_captcha') || !function_exists('anr_get_option')) {
+    } else if (!function_exists('c4wp_verify_captcha') || !function_exists('c4wp_get_option')) {
         echo '<div class="error"><p><strong>QDO Integration SEI</strong>: O plugin "Advanced noCaptcha & invisible Captcha" está em um versão incompatível.</p></div>';
     }
 }
@@ -300,7 +300,7 @@ function qdo_isei_form(array $atts) {
     }
 
     return qdo_isei_render_template('form', [
-        'rsk' => anr_get_option('site_key'),
+        'rsk' => qdo_isei_get_grecaptcha_site_key(),
         'proc_type' => $atts['proc_type'],
         'ano' => $atts['ano'],
         'semestre' => $atts['semestre'],

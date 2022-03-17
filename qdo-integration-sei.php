@@ -5,7 +5,7 @@
   Plugin URI:
   Description: Plugin para integrar funções do PS do SEI da Otimize e RD Station Marketing
   Author: QuodDG
-  Version: 1.0.0
+  Version: 1.0.3
   Author URI: https://github.com/QuodDG
  */
 

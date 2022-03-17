@@ -110,10 +110,10 @@ function qdo_isei_ps_step_1($request) {
     $email = isset($body->isei_ps_email) ? filter_var($body->isei_ps_email, FILTER_SANITIZE_EMAIL) : '';
     $email2 = isset($body->isei_ps_email_2) ? filter_var($body->isei_ps_email_2, FILTER_SANITIZE_EMAIL) : '';
     $celular = isset($body->isei_ps_celular) ? $body->isei_ps_celular : '';
-
+    
     //Verify Captcha
     if (empty($recaptcha) || !qdo_isei_verify_recaptcha_v3($recaptcha)) {
-        return QdoJsonResponse::error(401, 'Captcha Inválido');
+        return QdoJsonResponse::error(422, 'Captcha Inválido');
     }
 
     if (empty($ano) || empty($semestre)) {
@@ -186,7 +186,7 @@ function qdo_isei_ps_step_2($request) {
 
     //Verify Captcha
     if (empty($recaptcha) || !qdo_isei_verify_recaptcha_v3($recaptcha)) {
-        return QdoJsonResponse::error(401, 'Captcha Inválido');
+        return QdoJsonResponse::error(422, 'Captcha Inválido');
     }
 
     if (empty($proc_type)) {
@@ -217,7 +217,7 @@ function qdo_isei_ps_step_3($request) {
 
     //Verify Captcha
     if (empty($recaptcha) || !qdo_isei_verify_recaptcha_v3($recaptcha)) {
-        return QdoJsonResponse::error(401, 'Captcha Inválido');
+        return QdoJsonResponse::error(422, 'Captcha Inválido');
     }
 
     //Dados
