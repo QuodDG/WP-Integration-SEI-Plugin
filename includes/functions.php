@@ -37,7 +37,7 @@ define('QDO_RD_INTEGRATION_NO_CONFIG', 0);
 define('QDO_RD_INTEGRATION_OFF', 1);
 define('QDO_RD_INTEGRATION_ON', 2);
 
-$qdo_isei_version = 103;
+$qdo_isei_version = 104;
 
 /* == Dependences == */
 
@@ -283,7 +283,7 @@ function qdo_isei_form(array $atts) {
 
     //Verifica se há algum processo seletivo aberto
     $ps = qdo_isei_get_ps_by_type(qdo_isei_get_proc_type_name($atts['proc_type']));
-    if (qdo_isei_request_fail($ps)) {
+    if (!is_null($ps) && qdo_isei_request_fail($ps)) {
         return qdo_isei_render_template('message-form', [
             'title' => 'Atenção',
             'message' => 'Não foi possível se conectar ao servidor. #001',
@@ -291,7 +291,7 @@ function qdo_isei_form(array $atts) {
         ]);
     }
 
-    if (count($ps->procSeletivo) <= 0) {
+    if (is_null($ps) || count($ps->procSeletivo) <= 0) {
         return qdo_isei_render_template('message-form', [
             'title' => 'Inscrições Encerradas',
             'message' => 'As inscrições para este tipo de processo seletivo estão encerradas.',

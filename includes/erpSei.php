@@ -31,6 +31,9 @@ function qdo_isei_get_all_ps() {
 
 function qdo_isei_get_ps_by_type($proc_type) {
     $r = qdo_isei_get_all_ps();
+    if(is_null($r)){
+        return $r;
+    }
     if (qdo_isei_request_fail($r)) {
         $r->mensagem = qdo_isei_convert_mensagem($r->mensagem);
         return $r;
@@ -51,6 +54,9 @@ function qdo_isei_get_ps_by_type($proc_type) {
 
 function qdo_isei_get_ps_by_code($code) {
     $r = qdo_isei_get_all_ps();
+    if(is_null($r)){
+        return $r;
+    }
     if (qdo_isei_request_fail($r)) {
         $r->mensagem = qdo_isei_convert_mensagem($r->mensagem);
         return $r;
